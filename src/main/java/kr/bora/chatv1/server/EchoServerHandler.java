@@ -57,10 +57,8 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg)throws Exception{
-        String message =null;
-        message = (String)msg;
 
-        log.info("channelRead of [SERVER] message =====" +  msg);
+        log.info("[SERVER-channelRead] Receive message =====" +  msg);
         Channel incoming = ctx.channel();
 
         log.info("channelGroup은???"+users +"세부보기"+ users.stream().sorted().collect(Collectors.toList()));
@@ -73,7 +71,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
                 channel.writeAndFlush("[sened by : " + incoming.remoteAddress() + "]" + msg + "\n");
             }
         }
-        if ("quit".equals(message)) {
+        if ("quit".equals(msg)) {
             ctx.close();
         }
     }

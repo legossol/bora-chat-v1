@@ -4,6 +4,10 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.json.JsonObjectDecoder;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.ReadTimeoutHandler;
@@ -16,8 +20,8 @@ public class EchoServerInitializer extends ChannelInitializer<SocketChannel> {
         ChannelPipeline pipeline = ch.pipeline();
 
         pipeline.addLast(new LineBasedFrameDecoder(65536));
-        pipeline.addLast(new StringDecoder());
-        pipeline.addLast(new StringEncoder());
+        pipeline.addLast(new ObjectDecoder(1024*1024, ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())));
+        pipeline.addLast(new ObjectEncoder());
         pipeline.addLast(new EchoServerHandler());
 //    pipeline.addLast(new HttpServerCodec());
 //    pipeline.addLast(new HttpServerUpgradeHandler());

@@ -1,8 +1,8 @@
 package kr.bora.chatv1.domain.reader;
 
-import kr.legossol.borachat.common.DomainEvent.DomainEventType;
-import kr.legossol.borachat.domain.model.entity.Message;
-import kr.legossol.borachat.domain.reader.event.MessageEvent;
+import kr.bora.chatv1.common.DomainEvent;
+import kr.bora.chatv1.domain.model.entity.Message;
+import kr.bora.chatv1.domain.reader.event.MessageEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 
@@ -14,7 +14,7 @@ public class MessageEventListener {
 
     @PostPersist
     public void messagePostPersist(Message message) {
-        eventPublisher.publishEvent(new MessageEvent(message, DomainEventType.CREATE,"topic","key"));
+        eventPublisher.publishEvent(new MessageEvent(message, DomainEvent.DomainEventType.CREATE,"topic","key"));
     }
 
 }

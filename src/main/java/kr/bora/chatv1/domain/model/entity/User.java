@@ -1,6 +1,6 @@
 package kr.bora.chatv1.domain.model.entity;
 
-import kr.legossol.borachat.common.BaseTime;
+import kr.bora.chatv1.common.BaseTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;

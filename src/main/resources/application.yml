@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/borachat?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&autoReconnection=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        envers:
+          audit_table_suffix: _TOYCHATHISTORY
+    servlet:
+      multipart:
+        enabled: true
+        location: C:\update
+        max-request-size: 30MB
+        max-file-size: 30MB
+
+---
+spring:
+  profiles:
+    active: dev1
+server:
+  port: 8081
+---
+spring:
+  profiles:
+    active: dev2
+server:
+  port: 8082

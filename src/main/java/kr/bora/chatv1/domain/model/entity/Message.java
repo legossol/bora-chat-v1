@@ -2,12 +2,7 @@ package kr.bora.chatv1.domain.model.entity;
 
 import kr.bora.chatv1.common.BaseTime;
 import kr.bora.chatv1.domain.reader.MessageEventListener;
-import kr.legossol.borachat.common.BaseTime;
-import kr.legossol.borachat.domain.reader.MessageEventListener;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
